@@ -14,13 +14,16 @@ import json
 import os
 import urllib.request
 import urllib.error
+import base64
+import hmac
+import hashlib
 from datetime import datetime
 
 PORT = 8080
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "fship_config.json")
 ORDERS_FILE = os.path.join(os.path.dirname(__file__), "orders.json")
 
-# Load Fship Config
+# Load Fship & Razorpay Config
 def load_config():
     if os.path.exists(CONFIG_FILE):
         try:
@@ -33,7 +36,9 @@ def load_config():
         "fship_api_url": "https://capi.fship.in/api/createforwardorder",
         "warehouse_name": "Primary Warehouse",
         "default_courier": "Delhivery",
-        "enable_live_dispatch": True
+        "enable_live_dispatch": True,
+        "razorpay_key_id": "rzp_live_Tpg6VudIihKrcr",
+        "razorpay_key_secret": "FjQdbmikcCY89emssFSB0QzH"
     }
 
 # Save order to orders.json
