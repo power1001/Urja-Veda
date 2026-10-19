@@ -172,13 +172,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (chkSubtitle) chkSubtitle.textContent = prod.subtitle;
 
     let payable = prod.price;
+    const deliveryText = prod.deliveryFee === 0 ? 'मुफ़्त डिलीवरी (₹0 Free)' : `+ ₹${prod.deliveryFee} Delhivery चार्ज`;
+
     if (paymentMethod === 'PREPAID') {
       payable = Math.round(prod.price * 0.9); // 10% instant prepaid discount
       if (chkTotal) {
-        chkTotal.innerHTML = `₹ ${payable.toLocaleString('en-IN')}/- <small style="display:block; color:#0d8a43; font-size:0.75rem;">(10% ऑनलाइन छूट लागू)</small>`;
+        chkTotal.innerHTML = `₹ ${payable.toLocaleString('en-IN')}/- <small style="display:block; color:#10B981; font-size:0.78rem; font-weight:700;">(मूल्य: ₹${prod.itemPrice} | डिलीवरी: ${deliveryText} | 10% ऑनलाइन छूट लागू)</small>`;
       }
     } else {
-      if (chkTotal) chkTotal.textContent = `₹ ${payable.toLocaleString('en-IN')}/-`;
+      if (chkTotal) {
+        chkTotal.innerHTML = `₹ ${payable.toLocaleString('en-IN')}/- <small style="display:block; color:#aaaaaa; font-size:0.78rem;">(मूल्य: ₹${prod.itemPrice} | डिलीवरी: ${deliveryText})</small>`;
+      }
     }
 
     if (finalSubmitPrice) finalSubmitPrice.textContent = payable.toLocaleString('en-IN');
