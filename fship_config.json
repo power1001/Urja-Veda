@@ -3,5 +3,7 @@
   "fship_api_url": "https://capi.fship.in/api/createforwardorder",
   "warehouse_name": "Primary Warehouse",
   "default_courier": "Delhivery",
-  "enable_live_dispatch": true
+  "enable_live_dispatch": true,
+  "razorpay_key_id": "rzp_live_Tpg6VudIihKrcr",
+  "razorpay_key_secret": "FjQdbmikcCY89emssFSB0QzH"
 }
