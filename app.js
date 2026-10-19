@@ -81,6 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const orderSuccessScreen = document.getElementById('orderSuccessScreen');
   const successName = document.getElementById('successName');
   const successOrderId = document.getElementById('successOrderId');
+  const successAwb = document.getElementById('successAwb');
+  const successPayment = document.getElementById('successPayment');
   const btnAfterSuccess = document.getElementById('btnAfterSuccess');
 
   // Mobile Menu Toggle
