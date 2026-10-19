@@ -1,0 +1,7 @@
+{
+  "fship_api_key": "cb521b2b38cbb3292b8c31234b66bb3295960a33cef1de90406b844648f1fee9",
+  "fship_api_url": "https://capi.fship.in/api/createforwardorder",
+  "warehouse_name": "Primary Warehouse",
+  "default_courier": "Delhivery",
+  "enable_live_dispatch": true
+}
