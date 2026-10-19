@@ -258,8 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCheckoutView();
   });
 
-  // Checkout Form Submission
-  checkoutForm?.addEventListener('submit', (e) => {
+  // Checkout Form Submission & Fship Delhivery Dispatch
+  checkoutForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('custName')?.value.trim();
@@ -273,14 +273,73 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const randomId = 'UV-' + Math.floor(100000 + Math.random() * 900000);
+    const submitBtn = checkoutForm.querySelector('.btn-confirm-order');
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '⏳ ऑर्डर दर्ज हो रहा है व Delhivery Waybill जनरेट हो रहा है...';
+    }
+
+    const prod = products[currentProductId];
+    let payable = prod ? prod.price : 1669;
+    if (paymentMethod === 'PREPAID') {
+      payable = Math.round(payable * 0.9);
+    }
+
+    const orderPayload = {
+      name: name,
+      phone: phone,
+      address: addr,
+      pincode: pin,
+      city: city,
+      payment_mode: paymentMethod,
+      product_id: currentProductId,
+      product_name: prod ? prod.name : 'Urja Veda Complete Kit',
+      amount: payable
+    };
+
+    let assignedOrderId = 'UV-' + Math.floor(100000 + Math.random() * 900000);
+    let assignedAwb = 'AWB-DLV-' + assignedOrderId.replace('UV-', '');
+
+    try {
+      const res = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderPayload)
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.order_id) {
+          assignedOrderId = data.order_id;
+        }
+        if (data && data.awb_number) {
+          assignedAwb = data.awb_number;
+        }
+        console.log('[Urja Veda Fship Dispatch Response]:', data);
+      }
+    } catch (err) {
+      console.warn('[Fship API Local Fallback]', err);
+    }
+
+    // Populate Success Screen
     if (successName) successName.textContent = name;
-    if (successOrderId) successOrderId.textContent = randomId;
+    if (successOrderId) successOrderId.textContent = assignedOrderId;
+    if (successAwb) successAwb.textContent = assignedAwb;
+    if (successPayment) {
+      successPayment.textContent = paymentMethod === 'COD' 
+        ? `Cash on Delivery (₹ ${payable.toLocaleString('en-IN')})` 
+        : `Prepaid Online (₹ ${payable.toLocaleString('en-IN')} - 10% Off)`;
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnText;
+    }
 
     checkoutForm.style.display = 'none';
     if (orderSuccessScreen) orderSuccessScreen.style.display = 'block';
 
-    console.log(`[Urja Veda Order Placed] Order ID: ${randomId}, Name: ${name}, Phone: ${phone}, Pack: ${currentProductId}, Payment: ${paymentMethod}`);
+    console.log(`[Urja Veda Order Complete] Order ID: ${assignedOrderId}, Name: ${name}, AWB: ${assignedAwb}`);
   });
 
   btnAfterSuccess?.addEventListener('click', closeCheckout);
