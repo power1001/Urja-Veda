@@ -1000,16 +1000,33 @@
         </p>
       </form>
 
-      <!-- Order Success State -->
+      <!-- Order Success State with Fship Delhivery Partner Details -->
       <div id="orderSuccessScreen" style="display: none; text-align: center; padding: 20px 10px;">
         <div style="font-size: 3.5rem; color: #10b981; margin-bottom: 12px;">✅</div>
         <h3 style="font-size: 1.6rem; font-weight: 900; color: #ffffff; margin-bottom: 6px;">ऑर्डर सफलतापूर्वक बुक हुआ!</h3>
         <p style="font-size: 1rem; color: #cccccc; margin-bottom: 18px;">
-          धन्यवाद, <strong id="successName">ग्राहक</strong>! आपका Urja Veda पैक बुक कर दिया गया है।
+          धन्यवाद, <strong id="successName">ग्राहक</strong>! आपका Urja Veda पैक सफलतापूर्वक दर्ज कर लिया गया है।
         </p>
-        <div style="background: #202020; border: 1px solid #333333; padding: 12px; border-radius: 8px; font-weight: 700; color: #ffffff; margin-bottom: 20px;">
-          Order ID: <span id="successOrderId" style="color: #f5c518;">UV-839201</span>
+
+        <div style="background: #1e1e1e; border: 1px solid #333333; padding: 16px; border-radius: 10px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-align: left; font-size: 0.95rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid #2a2a2a; padding-bottom: 6px;">
+            <span style="color:#999;">Order ID:</span>
+            <span id="successOrderId" style="color: #f5c518; font-family: monospace; font-size: 1.05rem;">UV-839201</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid #2a2a2a; padding-bottom: 6px;">
+            <span style="color:#999;">Courier Partner:</span>
+            <span style="color: #ffffff; display: flex; align-items: center; gap: 6px;">🚚 Delhivery (via Fship)</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid #2a2a2a; padding-bottom: 6px;">
+            <span style="color:#999;">Tracking / AWB:</span>
+            <span id="successAwb" style="color: #10b981; font-family: monospace;">AWB-DLV-839201</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color:#999;">Payment Mode:</span>
+            <span id="successPayment" style="color: #ff6b6b;">Cash on Delivery (COD)</span>
+          </div>
         </div>
+
         <p style="font-size: 0.9rem; color: #aaaaaa; margin-bottom: 24px;">
           📦 आपका पार्सल 100% गोपनीय और सील्ड पैकिंग में 24 घंटे में रवाना कर दिया जाएगा। 3-5 दिनों में आपके पते पर डिलीवरी होगी।
         </p>
