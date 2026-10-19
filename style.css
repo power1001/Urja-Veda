@@ -311,20 +311,27 @@ img {
   position: absolute;
   top: 16px;
   left: 16px;
+  z-index: 25;
   background: var(--pm-green);
   color: #ffffff;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  padding: 6px 16px;
+  padding: 8px 18px;
   border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 12px var(--pm-green-glow);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 12px var(--pm-green-glow);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: calc(100% - 32px);
+  white-space: nowrap;
 }
 
 .gallery-thumbs-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin-top: 16px;
 }
