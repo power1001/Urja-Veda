@@ -1,19 +1,21 @@
 /* ==========================================================================
-   URJA VEDA — PREMIUM LUXURY BLACK THEME (DARK MODE)
+   URJA VEDA — NATURAL HERBAL GREEN & LUXURY BLACK THEME
    Brand: Urja Veda | Original Himalayan & Ayurvedic Herbs for Men
-   Style: Ultra-Premium Black & Crimson-Gold D2C Aesthetic
+   Style: Ultra-Premium Obsidian Black & Natural Herbal Green (#10B981)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
-  /* Brand Palette */
-  --pm-red: #E50914;
-  --pm-red-hover: #c40812;
-  --pm-red-glow: rgba(229, 9, 20, 0.4);
+  /* Natural Herbal Green Brand Palette */
+  --pm-green: #10B981;
+  --pm-green-hover: #059669;
+  --pm-green-glow: rgba(16, 185, 129, 0.4);
+  --pm-green-light: #34d399;
+  --pm-green-dark: #047857;
+  
   --pm-gold: #f5c518;
   --pm-gold-glow: rgba(245, 197, 24, 0.25);
-  --pm-green: #10b981;
 
   /* Black Theme Surfaces */
   --pm-black: #080808;
@@ -26,7 +28,7 @@
   /* Borders */
   --pm-border: #262626;
   --pm-border-light: #333333;
-  --pm-border-active: #E50914;
+  --pm-border-active: var(--pm-green);
   
   /* Typography */
   --pm-text: #e8e8e8;
@@ -84,7 +86,7 @@ img {
 }
 
 /* ==========================================================================
-   1. TOP MARQUEE (PLAYMORE EXACT)
+   1. TOP MARQUEE
    ========================================================================== */
 .top-marquee {
   background: #000000;
@@ -113,7 +115,7 @@ img {
 }
 
 .marquee-track strong {
-  color: var(--pm-gold);
+  color: var(--pm-green-light);
 }
 
 @keyframes marqueeAnim {
@@ -151,7 +153,7 @@ img {
 .brand-logo-icon {
   width: 42px;
   height: 42px;
-  background: linear-gradient(135deg, var(--pm-red), #990000);
+  background: linear-gradient(135deg, var(--pm-green), var(--pm-green-dark));
   color: #ffffff;
   border-radius: 8px;
   display: flex;
@@ -160,7 +162,7 @@ img {
   font-size: 1.35rem;
   font-weight: 900;
   letter-spacing: -1px;
-  box-shadow: 0 0 15px var(--pm-red-glow);
+  box-shadow: 0 0 15px var(--pm-green-glow);
 }
 
 .brand-logo-text {
@@ -171,18 +173,18 @@ img {
 }
 
 .brand-logo-text span {
-  color: var(--pm-red);
+  color: var(--pm-green);
 }
 
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 26px;
   list-style: none;
 }
 
 .nav-link {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #b8b8b8;
   transition: all 0.2s ease;
@@ -192,7 +194,7 @@ img {
 .nav-link:hover,
 .nav-link.active {
   color: #ffffff;
-  border-bottom: 2px solid var(--pm-red);
+  border-bottom: 2px solid var(--pm-green);
 }
 
 .header-cart-btn {
@@ -215,7 +217,7 @@ img {
 }
 
 .cart-qty-badge {
-  background: var(--pm-red);
+  background: var(--pm-green);
   color: #ffffff;
   width: 20px;
   height: 20px;
@@ -224,6 +226,7 @@ img {
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
+  font-weight: 800;
 }
 
 .mobile-toggle {
@@ -234,7 +237,7 @@ img {
 }
 
 /* ==========================================================================
-   3. HERO PRODUCT SECTION (PLAYMORE EXACT 2-COLUMN D2C ENGINE - BLACK THEME)
+   3. HERO PRODUCT SECTION (NATURAL HERBAL GREEN & BLACK THEME)
    ========================================================================== */
 .hero-product-section {
   padding: 34px 0 50px;
@@ -280,7 +283,7 @@ img {
   position: absolute;
   top: 16px;
   left: 16px;
-  background: var(--pm-red);
+  background: var(--pm-green);
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 800;
@@ -288,7 +291,7 @@ img {
   border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 12px var(--pm-red-glow);
+  box-shadow: 0 4px 12px var(--pm-green-glow);
 }
 
 .gallery-thumbs-row {
@@ -312,8 +315,8 @@ img {
 
 .gallery-thumb-item:hover,
 .gallery-thumb-item.active {
-  border-color: var(--pm-red);
-  background: #201313;
+  border-color: var(--pm-green);
+  background: #0d1e15;
 }
 
 .gallery-thumb-item img {
@@ -328,9 +331,9 @@ img {
 }
 
 .offer-ribbon-tag {
-  background: rgba(229, 9, 20, 0.12);
-  border: 1px solid rgba(229, 9, 20, 0.4);
-  color: #ff6b6b;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
   padding: 10px 16px;
   border-radius: 8px;
   font-size: 0.95rem;
@@ -366,7 +369,7 @@ img {
 }
 
 .hero-title-main span {
-  color: var(--pm-red);
+  color: var(--pm-green);
 }
 
 .hero-hindi-subtitle {
@@ -396,11 +399,11 @@ img {
 
 .selector-header-row span:last-child {
   font-size: 0.85rem;
-  color: var(--pm-gold);
+  color: var(--pm-green);
   font-weight: 700;
 }
 
-/* The 4 Cards (Black Theme with Dark Luxury Selected State) */
+/* The 4 Cards (Black Theme with Herbal Green Active State) */
 .pack-cards-container {
   display: flex;
   flex-direction: column;
@@ -427,13 +430,13 @@ img {
   background: var(--pm-bg-card-hover);
 }
 
-/* DARK LUXURY ACTIVE STATE (.snapmint / .selected) */
+/* NATURAL HERBAL GREEN ACTIVE STATE */
 .pmc-card.selected,
 .pmc-card.snapmint {
-  background: linear-gradient(135deg, #241d13 0%, #17130b 100%) !important;
-  border-color: var(--pm-gold) !important;
+  background: linear-gradient(135deg, #0e2417 0%, #091a10 100%) !important;
+  border-color: var(--pm-green) !important;
   transform: scale(1.02);
-  box-shadow: 0 8px 25px rgba(245, 197, 24, 0.2), 0 0 15px rgba(229, 9, 20, 0.15);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.25), 0 0 15px rgba(16, 185, 129, 0.15);
 }
 
 .pmc-thumb {
@@ -473,7 +476,7 @@ img {
 
 .pmc-savings-badge {
   display: inline-block;
-  background: var(--pm-red);
+  background: var(--pm-green);
   color: #ffffff;
   font-size: 0.72rem;
   font-weight: 800;
@@ -489,12 +492,12 @@ img {
 .pmc-sale-price {
   font-size: 1.45rem;
   font-weight: 900;
-  color: #ff5252;
+  color: var(--pm-green);
   line-height: 1.1;
 }
 
 .pmc-card.selected .pmc-sale-price {
-  color: var(--pm-gold);
+  color: var(--pm-green-light);
 }
 
 .pmc-regular-price {
@@ -522,16 +525,16 @@ img {
 }
 
 .pmc-card.selected .pmc-check {
-  background: var(--pm-gold);
-  border-color: var(--pm-gold);
+  background: var(--pm-green);
+  border-color: var(--pm-green);
   color: #000000;
   font-weight: 900;
 }
 
-/* BIG BUY NOW BUTTON */
+/* BIG NATURAL HERBAL GREEN BUY NOW BUTTON */
 .btn-buy-now-playmore {
   width: 100%;
-  background: linear-gradient(135deg, var(--pm-red) 0%, #b0070a 100%);
+  background: linear-gradient(135deg, var(--pm-green) 0%, var(--pm-green-hover) 100%);
   color: #ffffff;
   font-size: 1.45rem;
   font-weight: 900;
@@ -541,7 +544,7 @@ img {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  box-shadow: 0 10px 30px var(--pm-red-glow);
+  box-shadow: 0 10px 30px var(--pm-green-glow);
   transition: all 0.25s ease;
   cursor: pointer;
   text-transform: uppercase;
@@ -549,9 +552,9 @@ img {
 }
 
 .btn-buy-now-playmore:hover {
-  background: linear-gradient(135deg, #ff1a25 0%, var(--pm-red) 100%);
+  background: linear-gradient(135deg, #34d399 0%, var(--pm-green) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 14px 38px rgba(229, 9, 20, 0.6);
+  box-shadow: 0 14px 38px rgba(16, 185, 129, 0.6);
 }
 
 .trust-payment-icons {
@@ -575,19 +578,18 @@ img {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border-left: 4px solid var(--pm-red);
   border: 1px solid #282828;
-  border-left: 4px solid var(--pm-red);
+  border-left: 4px solid var(--pm-green);
 }
 
 /* ==========================================================================
-   4. AUTHENTICITY / WARNING SECTION
+   4. AUTHENTICITY / WARNING SECTION (HERBAL GREEN TONE)
    ========================================================================== */
 .warning-auth-section {
   padding: 44px 0;
-  background: #140808;
-  border-top: 1px solid #3d1414;
-  border-bottom: 1px solid #3d1414;
+  background: #08160e;
+  border-top: 1px solid #143e24;
+  border-bottom: 1px solid #143e24;
 }
 
 .auth-wrapper {
@@ -599,7 +601,7 @@ img {
 .auth-wrapper h2 {
   font-size: 1.85rem;
   font-weight: 900;
-  color: #ff5252;
+  color: var(--pm-green);
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -609,7 +611,7 @@ img {
 
 .auth-wrapper p {
   font-size: 1.05rem;
-  color: #ffdede;
+  color: #d1fae5;
   line-height: 1.65;
 }
 
@@ -632,7 +634,7 @@ img {
 }
 
 .sec-sub-label {
-  color: var(--pm-red);
+  color: var(--pm-green);
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 2px;
@@ -674,8 +676,8 @@ img {
 }
 
 .concern-item-card:hover {
-  border-color: var(--pm-red);
-  box-shadow: 0 10px 30px var(--pm-red-glow);
+  border-color: var(--pm-green);
+  box-shadow: 0 10px 30px var(--pm-green-glow);
   transform: translateY(-3px);
   background: var(--pm-bg-card-hover);
 }
@@ -691,22 +693,22 @@ img {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--pm-red);
+  background: var(--pm-green);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
   font-size: 0.95rem;
-  box-shadow: 0 2px 8px var(--pm-red-glow);
+  box-shadow: 0 2px 8px var(--pm-green-glow);
 }
 
 .concern-tag {
   font-size: 0.75rem;
   font-weight: 800;
-  color: var(--pm-gold);
-  background: #241c0e;
-  border: 1px solid #3d2f17;
+  color: var(--pm-green-light);
+  background: #0d2818;
+  border: 1px solid #1a4d2e;
   padding: 4px 10px;
   border-radius: 50px;
 }
@@ -722,7 +724,7 @@ img {
 .concern-item-card h4 {
   font-size: 0.92rem;
   font-weight: 700;
-  color: #ff5252;
+  color: var(--pm-green);
   margin-bottom: 12px;
 }
 
@@ -735,18 +737,17 @@ img {
 }
 
 .remedy-highlight-box {
-  background: #1c1010;
-  border-left: 3px solid var(--pm-red);
+  background: #091a10;
+  border: 1px solid #163e25;
+  border-left: 3px solid var(--pm-green);
   padding: 12px 14px;
   border-radius: 0 8px 8px 0;
-  border: 1px solid #2d1616;
-  border-left: 3px solid var(--pm-red);
 }
 
 .remedy-label {
   font-size: 0.74rem;
   font-weight: 800;
-  color: #ff5252;
+  color: var(--pm-green);
   text-transform: uppercase;
   margin-bottom: 2px;
   display: block;
@@ -818,7 +819,7 @@ img {
 }
 
 .why-card-text h4 span {
-  color: var(--pm-gold);
+  color: var(--pm-green);
 }
 
 .why-card-text p {
@@ -905,9 +906,9 @@ img {
 
 .usage-pill {
   display: inline-block;
-  background: #221c10;
-  color: var(--pm-gold);
-  border: 1px solid #3d2f17;
+  background: #0d2818;
+  color: var(--pm-green-light);
+  border: 1px solid #1a4d2e;
   font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -940,7 +941,7 @@ img {
 
 .usage-list li::before {
   content: '✓';
-  color: var(--pm-gold);
+  color: var(--pm-green);
   font-weight: 900;
 }
 
@@ -949,9 +950,9 @@ img {
   margin: 32px auto 0;
   text-align: center;
   font-size: 0.9rem;
-  color: #aaaaaa;
-  background: #181212;
-  border: 1px solid #361919;
+  color: #a7f3d0;
+  background: #08160e;
+  border: 1px solid #143e24;
   padding: 14px 20px;
   border-radius: 8px;
 }
@@ -978,7 +979,7 @@ img {
 
 .pm-pack-heading > span {
   display: block;
-  color: var(--pm-red);
+  color: var(--pm-green);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 2px;
@@ -1039,9 +1040,9 @@ img {
   height: 42px;
   min-width: 42px;
   border-radius: 50%;
-  background: #252525;
-  color: var(--pm-gold);
-  border: 1px solid #383838;
+  background: #1c2e22;
+  color: var(--pm-green-light);
+  border: 1px solid #234d31;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1105,7 +1106,7 @@ img {
 }
 
 .pm-pack-main-qty strong {
-  color: var(--pm-gold);
+  color: var(--pm-green);
   font-size: 29px;
   font-weight: 900;
 }
@@ -1135,7 +1136,7 @@ img {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--pm-gold);
+  background: var(--pm-green);
   color: #000000;
   display: inline-flex;
   align-items: center;
@@ -1161,7 +1162,7 @@ img {
 
 .pm-kit-box strong {
   display: block;
-  color: var(--pm-gold);
+  color: var(--pm-green);
   font-size: 22px;
   font-weight: 900;
 }
@@ -1221,7 +1222,7 @@ img {
 .faq-toggle-plus {
   font-size: 1.4rem;
   font-weight: 400;
-  color: var(--pm-red);
+  color: var(--pm-green);
   line-height: 1;
   transition: transform 0.2s ease;
 }
@@ -1274,7 +1275,7 @@ img {
 }
 
 .rating-stars {
-  color: var(--pm-gold);
+  color: var(--pm-green);
   font-size: 1.4rem;
   margin: 6px 0;
 }
@@ -1314,7 +1315,7 @@ img {
 
 .progress-fill {
   height: 100%;
-  background: var(--pm-gold);
+  background: var(--pm-green);
   border-radius: 50px;
 }
 
@@ -1363,7 +1364,7 @@ img {
 }
 
 .review-stars-row {
-  color: var(--pm-gold);
+  color: var(--pm-green);
   font-size: 0.95rem;
   margin-bottom: 8px;
 }
@@ -1399,7 +1400,7 @@ img {
 }
 
 .footer-brand h3 span {
-  color: var(--pm-red);
+  color: var(--pm-green);
 }
 
 .footer-brand p {
@@ -1450,7 +1451,7 @@ img {
   width: 100%;
   background: rgba(18, 18, 18, 0.96);
   backdrop-filter: blur(10px);
-  border-top: 2px solid var(--pm-red);
+  border-top: 2px solid var(--pm-green);
   padding: 12px 20px;
   box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.7);
   z-index: 1000;
@@ -1510,7 +1511,7 @@ img {
 .sticky-price-now {
   font-size: 1.35rem;
   font-weight: 900;
-  color: var(--pm-gold);
+  color: var(--pm-green);
 }
 
 .sticky-price-old {
@@ -1520,7 +1521,7 @@ img {
 }
 
 .btn-sticky-order {
-  background: linear-gradient(135deg, var(--pm-red) 0%, #b0070a 100%);
+  background: linear-gradient(135deg, var(--pm-green) 0%, var(--pm-green-hover) 100%);
   color: #ffffff;
   font-size: 1.15rem;
   font-weight: 900;
@@ -1529,15 +1530,15 @@ img {
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
-  box-shadow: 0 4px 15px var(--pm-red-glow);
+  box-shadow: 0 4px 15px var(--pm-green-glow);
 }
 
 .btn-sticky-order:hover {
-  background: var(--pm-red-hover);
+  background: var(--pm-green-hover);
 }
 
 /* ==========================================================================
-   14. FAST CHECKOUT MODAL (BLACK THEME)
+   14. FAST CHECKOUT MODAL (HERBAL GREEN THEME)
    ========================================================================== */
 .modal-backdrop {
   position: fixed;
@@ -1612,8 +1613,8 @@ img {
 }
 
 .checkout-product-summary {
-  background: #1c1414;
-  border: 1px solid #381e1e;
+  background: #0b1f14;
+  border: 1px solid #18472a;
   border-radius: 10px;
   padding: 14px;
   display: flex;
@@ -1640,7 +1641,7 @@ img {
 .chk-price-tag {
   font-size: 1.3rem;
   font-weight: 900;
-  color: var(--pm-gold);
+  color: var(--pm-green);
 }
 
 .payment-method-toggle {
@@ -1664,9 +1665,9 @@ img {
 }
 
 .pay-toggle-btn.selected {
-  border-color: var(--pm-red);
-  background: #2a1111;
-  color: #ff6b6b;
+  border-color: var(--pm-green);
+  background: #0d2818;
+  color: var(--pm-green-light);
 }
 
 .form-group {
@@ -1694,7 +1695,7 @@ img {
 }
 
 .form-control:focus {
-  border-color: var(--pm-red);
+  border-color: var(--pm-green);
   outline: none;
   background: #202020;
 }
@@ -1711,7 +1712,7 @@ img {
 
 .btn-confirm-order {
   width: 100%;
-  background: linear-gradient(135deg, var(--pm-red) 0%, #b0070a 100%);
+  background: linear-gradient(135deg, var(--pm-green) 0%, var(--pm-green-hover) 100%);
   color: #ffffff;
   font-size: 1.25rem;
   font-weight: 900;
@@ -1720,11 +1721,11 @@ img {
   cursor: pointer;
   margin-top: 8px;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 18px var(--pm-red-glow);
+  box-shadow: 0 4px 18px var(--pm-green-glow);
 }
 
 .btn-confirm-order:hover {
-  background: var(--pm-red-hover);
+  background: var(--pm-green-hover);
 }
 
 /* ==========================================================================
