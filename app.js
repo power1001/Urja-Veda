@@ -9,38 +9,38 @@ document.addEventListener('DOMContentLoaded', () => {
     oil: {
       id: 'oil',
       name: 'Urja Veda Oil',
-      subtitle: '30 ML Dropper Bottle • हर्बल ऑयल',
+      subtitle: '30 ML Dropper Bottle • हर्बल मसाज ऑयल',
       price: 849,
       regularPrice: 1099,
       img: 'assets/images/oil.jpg',
-      ribbon: 'हर्बल ऑयल • 20% छूट'
+      ribbon: '🔥 हर्बल ऑयल • 20% छूट'
     },
     powder: {
       id: 'powder',
       name: 'Urja Veda Powder',
-      subtitle: '150g Traditional Powder • आयुर्वेदिक चूर्ण',
+      subtitle: '150g Traditional Jar • आयुर्वेदिक चूर्ण',
       price: 899,
       regularPrice: 1999,
       img: 'assets/images/powder.jpg',
-      ribbon: 'पारंपरिक चूर्ण • 55% छूट'
+      ribbon: '🔥 पारंपरिक चूर्ण • 55% छूट'
     },
     capsule: {
       id: 'capsule',
       name: 'Urja Veda Capsule',
-      subtitle: '60 Veg Capsules • 30 Days Supply',
+      subtitle: '60 Veg Capsules • 100% शाकाहारी कैप्सूल',
       price: 1069,
       regularPrice: 2199,
       img: 'assets/images/capsules.jpg',
-      ribbon: 'प्रीमियम कैप्सूल • 52% छूट'
+      ribbon: '🔥 प्रीमियम कैप्सूल • 52% छूट'
     },
     kit: {
       id: 'kit',
       name: 'Urja Veda Complete Kit',
-      subtitle: 'Oil (30ml) + Capsules (60) + Powder (150g)',
+      subtitle: 'Oil (30ml) + Capsules (60) + Powder (150g) • संपूर्ण महा पैक',
       price: 1669,
       regularPrice: 4737,
       img: 'assets/images/combo-pack.jpg',
-      ribbon: 'बेस्ट सेलर • 3-इन-1 कॉम्बो (66% छूट)'
+      ribbon: '🔥 बेस्ट सेलर • 3-इन-1 कॉम्बो (66% छूट)'
     }
   };
 
