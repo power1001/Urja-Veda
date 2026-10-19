@@ -1,22 +1,39 @@
 /* ==========================================================================
-   URJA VEDA — PLAYMORE.IN 1:1 CLONE DESIGN SYSTEM
+   URJA VEDA — PREMIUM LUXURY BLACK THEME (DARK MODE)
    Brand: Urja Veda | Original Himalayan & Ayurvedic Herbs for Men
-   Style: Exact PlayMore.in Layout, Typography, & Color Palette
+   Style: Ultra-Premium Black & Crimson-Gold D2C Aesthetic
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
-  --pm-red: #CB090D;
-  --pm-red-hover: #b0070a;
-  --pm-yellow-selected: #fde7b5;
-  --pm-black: #111111;
-  --pm-dark-bg: #141414;
-  --pm-grey-light: #f7f7f7;
-  --pm-border: #e6e6e6;
-  --pm-text: #222222;
-  --pm-text-muted: #666666;
-  --pm-green: #0d8a43;
+  /* Brand Palette */
+  --pm-red: #E50914;
+  --pm-red-hover: #c40812;
+  --pm-red-glow: rgba(229, 9, 20, 0.4);
+  --pm-gold: #f5c518;
+  --pm-gold-glow: rgba(245, 197, 24, 0.25);
+  --pm-green: #10b981;
+
+  /* Black Theme Surfaces */
+  --pm-black: #080808;
+  --pm-bg-body: #0d0d0d;
+  --pm-bg-card: #151515;
+  --pm-bg-card-hover: #1c1c1c;
+  --pm-bg-secondary: #111111;
+  --pm-bg-tertiary: #191919;
+  
+  /* Borders */
+  --pm-border: #262626;
+  --pm-border-light: #333333;
+  --pm-border-active: #E50914;
+  
+  /* Typography */
+  --pm-text: #e8e8e8;
+  --pm-text-heading: #ffffff;
+  --pm-text-muted: #999999;
+  --pm-text-dim: #777777;
+  
   --font-main: 'Poppins', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -29,13 +46,14 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  background-color: var(--pm-bg-body);
 }
 
 body {
   font-family: var(--font-main);
-  background-color: #ffffff;
+  background-color: var(--pm-bg-body);
   color: var(--pm-text);
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -79,6 +97,7 @@ img {
   letter-spacing: 0.5px;
   position: relative;
   z-index: 100;
+  border-bottom: 1px solid #1f1f1f;
 }
 
 .marquee-track {
@@ -94,7 +113,7 @@ img {
 }
 
 .marquee-track strong {
-  color: #ffde59;
+  color: var(--pm-gold);
 }
 
 @keyframes marqueeAnim {
@@ -103,16 +122,17 @@ img {
 }
 
 /* ==========================================================================
-   2. SITE HEADER (STICKY - PLAYMORE EXACT)
+   2. SITE HEADER (STICKY)
    ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
-  background: #111111;
+  background: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(12px);
   color: #ffffff;
   z-index: 999;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid #222222;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--pm-border);
 }
 
 .header-inner {
@@ -131,7 +151,7 @@ img {
 .brand-logo-icon {
   width: 42px;
   height: 42px;
-  background: var(--pm-red);
+  background: linear-gradient(135deg, var(--pm-red), #990000);
   color: #ffffff;
   border-radius: 8px;
   display: flex;
@@ -140,6 +160,7 @@ img {
   font-size: 1.35rem;
   font-weight: 900;
   letter-spacing: -1px;
+  box-shadow: 0 0 15px var(--pm-red-glow);
 }
 
 .brand-logo-text {
@@ -161,10 +182,10 @@ img {
 }
 
 .nav-link {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  color: #e5e5e5;
-  transition: color 0.2s ease;
+  color: #b8b8b8;
+  transition: all 0.2s ease;
   padding: 6px 0;
 }
 
@@ -178,7 +199,7 @@ img {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #222222;
+  background: #1a1a1a;
   color: #ffffff;
   padding: 9px 18px;
   border-radius: 50px;
@@ -189,7 +210,8 @@ img {
 }
 
 .header-cart-btn:hover {
-  background: #2a2a2a;
+  background: #252525;
+  border-color: #444;
 }
 
 .cart-qty-badge {
@@ -212,11 +234,11 @@ img {
 }
 
 /* ==========================================================================
-   3. HERO PRODUCT SECTION (PLAYMORE EXACT 2-COLUMN D2C ENGINE)
+   3. HERO PRODUCT SECTION (PLAYMORE EXACT 2-COLUMN D2C ENGINE - BLACK THEME)
    ========================================================================== */
 .hero-product-section {
   padding: 34px 0 50px;
-  background: #ffffff;
+  background: var(--pm-bg-body);
 }
 
 .hero-product-grid {
@@ -233,7 +255,7 @@ img {
 }
 
 .main-image-frame {
-  background: #fbfbfb;
+  background: #141414;
   border: 1px solid var(--pm-border);
   border-radius: 14px;
   padding: 24px;
@@ -243,7 +265,7 @@ img {
   min-height: 480px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .main-image-frame img {
@@ -251,6 +273,7 @@ img {
   width: auto;
   object-fit: contain;
   transition: transform 0.3s ease, opacity 0.2s ease;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
 }
 
 .badge-overlay-top {
@@ -261,10 +284,11 @@ img {
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 800;
-  padding: 5px 14px;
+  padding: 6px 16px;
   border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px var(--pm-red-glow);
 }
 
 .gallery-thumbs-row {
@@ -277,7 +301,7 @@ img {
 .gallery-thumb-item {
   border: 2px solid var(--pm-border);
   border-radius: 10px;
-  background: #ffffff;
+  background: #151515;
   padding: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -289,7 +313,7 @@ img {
 .gallery-thumb-item:hover,
 .gallery-thumb-item.active {
   border-color: var(--pm-red);
-  background: #fff8f8;
+  background: #201313;
 }
 
 .gallery-thumb-item img {
@@ -304,9 +328,9 @@ img {
 }
 
 .offer-ribbon-tag {
-  background: #fff3f3;
-  border: 1px solid #ffccd0;
-  color: var(--pm-red);
+  background: rgba(229, 9, 20, 0.12);
+  border: 1px solid rgba(229, 9, 20, 0.4);
+  color: #ff6b6b;
   padding: 10px 16px;
   border-radius: 8px;
   font-size: 0.95rem;
@@ -315,6 +339,10 @@ img {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.offer-ribbon-tag strong {
+  color: #ffffff;
 }
 
 .herbal-tag-sub {
@@ -332,39 +360,47 @@ img {
 .hero-title-main {
   font-size: 2.3rem;
   font-weight: 900;
-  color: var(--pm-black);
-  line-height: 1.18;
-  margin-bottom: 12px;
+  color: var(--pm-text-heading);
+  line-height: 1.2;
+  margin-bottom: 8px;
 }
 
 .hero-title-main span {
   color: var(--pm-red);
 }
 
+.hero-hindi-subtitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--pm-gold);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
 .hero-subdesc {
-  font-size: 1.02rem;
-  color: #444444;
+  font-size: 1rem;
+  color: #b8b8b8;
   line-height: 1.6;
   margin-bottom: 22px;
 }
 
 .selector-header-row {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
-  color: var(--pm-black);
+  color: var(--pm-text-heading);
   margin-bottom: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.selector-header-row span {
+.selector-header-row span:last-child {
   font-size: 0.85rem;
-  color: var(--pm-red);
+  color: var(--pm-gold);
   font-weight: 700;
 }
 
-/* The 4 Cards (PlayMore Exact: pmc1, pmc2, pmc3, pmc4) */
+/* The 4 Cards (Black Theme with Dark Luxury Selected State) */
 .pack-cards-container {
   display: flex;
   flex-direction: column;
@@ -373,8 +409,8 @@ img {
 }
 
 .pmc-card {
-  background: #ffffff;
-  border: 2px solid var(--pm-border);
+  background: var(--pm-bg-card);
+  border: 1.5px solid var(--pm-border);
   border-radius: 12px;
   padding: 14px 18px;
   display: grid;
@@ -382,33 +418,35 @@ img {
   align-items: center;
   gap: 16px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   position: relative;
 }
 
 .pmc-card:hover {
-  border-color: #bbbbbb;
+  border-color: #444444;
+  background: var(--pm-bg-card-hover);
 }
 
-/* EXACT PLAYMORE ACTIVE STATE (.snapmint / .selected) */
+/* DARK LUXURY ACTIVE STATE (.snapmint / .selected) */
 .pmc-card.selected,
 .pmc-card.snapmint {
-  background: var(--pm-yellow-selected) !important;
-  border-color: var(--pm-red) !important;
+  background: linear-gradient(135deg, #241d13 0%, #17130b 100%) !important;
+  border-color: var(--pm-gold) !important;
   transform: scale(1.02);
-  box-shadow: 0 6px 20px rgba(203, 9, 13, 0.15);
+  box-shadow: 0 8px 25px rgba(245, 197, 24, 0.2), 0 0 15px rgba(229, 9, 20, 0.15);
 }
 
 .pmc-thumb {
   width: 75px;
   height: 75px;
   border-radius: 8px;
-  background: #ffffff;
+  background: #111111;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   padding: 4px;
+  border: 1px solid #2a2a2a;
 }
 
 .pmc-thumb img {
@@ -419,14 +457,18 @@ img {
 .pmc-info h4 {
   font-size: 1.08rem;
   font-weight: 800;
-  color: var(--pm-black);
+  color: var(--pm-text-heading);
   margin-bottom: 2px;
+}
+
+.pmc-card.selected .pmc-info h4 {
+  color: #ffffff;
 }
 
 .pmc-info p {
   font-size: 0.85rem;
-  color: #555555;
-  margin-bottom: 2px;
+  color: #aaaaaa;
+  margin-bottom: 4px;
 }
 
 .pmc-savings-badge {
@@ -435,7 +477,7 @@ img {
   color: #ffffff;
   font-size: 0.72rem;
   font-weight: 800;
-  padding: 2px 8px;
+  padding: 3px 8px;
   border-radius: 4px;
   text-transform: uppercase;
 }
@@ -447,27 +489,31 @@ img {
 .pmc-sale-price {
   font-size: 1.45rem;
   font-weight: 900;
-  color: var(--pm-red);
+  color: #ff5252;
   line-height: 1.1;
+}
+
+.pmc-card.selected .pmc-sale-price {
+  color: var(--pm-gold);
 }
 
 .pmc-regular-price {
   font-size: 0.88rem;
-  color: #888888;
+  color: #777777;
   text-decoration: line-through;
   margin: 2px 0;
 }
 
 .pmc-tax-note {
   font-size: 0.72rem;
-  color: #777777;
+  color: #888888;
 }
 
 .pmc-check {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 2px solid #ccc;
+  border: 2px solid #444444;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -476,17 +522,18 @@ img {
 }
 
 .pmc-card.selected .pmc-check {
-  background: var(--pm-red);
-  border-color: var(--pm-red);
-  color: #ffffff;
+  background: var(--pm-gold);
+  border-color: var(--pm-gold);
+  color: #000000;
+  font-weight: 900;
 }
 
-/* BIG PLAYMORE BUY NOW BUTTON */
+/* BIG BUY NOW BUTTON */
 .btn-buy-now-playmore {
   width: 100%;
-  background: var(--pm-red);
+  background: linear-gradient(135deg, var(--pm-red) 0%, #b0070a 100%);
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   font-weight: 900;
   padding: 18px 24px;
   border-radius: 10px;
@@ -494,7 +541,7 @@ img {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  box-shadow: 0 10px 28px rgba(203, 9, 13, 0.4);
+  box-shadow: 0 10px 30px var(--pm-red-glow);
   transition: all 0.25s ease;
   cursor: pointer;
   text-transform: uppercase;
@@ -502,21 +549,21 @@ img {
 }
 
 .btn-buy-now-playmore:hover {
-  background: var(--pm-red-hover);
+  background: linear-gradient(135deg, #ff1a25 0%, var(--pm-red) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 14px 36px rgba(203, 9, 13, 0.5);
+  box-shadow: 0 14px 38px rgba(229, 9, 20, 0.6);
 }
 
 .trust-payment-icons {
   margin-top: 16px;
   text-align: center;
   font-size: 0.85rem;
-  color: #555555;
+  color: #999999;
   font-weight: 600;
 }
 
 .delivery-seal-strip {
-  background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
+  background: linear-gradient(135deg, #161616 0%, #202020 100%);
   color: #ffffff;
   padding: 12px 20px;
   border-radius: 8px;
@@ -529,16 +576,18 @@ img {
   justify-content: center;
   gap: 10px;
   border-left: 4px solid var(--pm-red);
+  border: 1px solid #282828;
+  border-left: 4px solid var(--pm-red);
 }
 
 /* ==========================================================================
-   4. AUTHENTICITY / WARNING SECTION (PLAYMORE EXACT)
+   4. AUTHENTICITY / WARNING SECTION
    ========================================================================== */
 .warning-auth-section {
   padding: 44px 0;
-  background: #fff8f8;
-  border-top: 1px solid #ffdcdc;
-  border-bottom: 1px solid #ffdcdc;
+  background: #140808;
+  border-top: 1px solid #3d1414;
+  border-bottom: 1px solid #3d1414;
 }
 
 .auth-wrapper {
@@ -550,7 +599,7 @@ img {
 .auth-wrapper h2 {
   font-size: 1.85rem;
   font-weight: 900;
-  color: var(--pm-red);
+  color: #ff5252;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -560,16 +609,21 @@ img {
 
 .auth-wrapper p {
   font-size: 1.05rem;
-  color: #333333;
+  color: #ffdede;
   line-height: 1.65;
 }
 
+.auth-wrapper strong {
+  color: var(--pm-gold);
+}
+
 /* ==========================================================================
-   5. WHY CHOOSE URJA VEDA SECTION (PLAYMORE EXACT)
+   5. 5 CORE MEN'S WELLNESS CONCERNS
    ========================================================================== */
-.why-choose-section {
-  padding: 70px 0;
-  background: #ffffff;
+.concerns-section {
+  padding: 80px 0;
+  background: #090909;
+  border-top: 1px solid var(--pm-border);
 }
 
 .sec-title-wrap {
@@ -583,15 +637,15 @@ img {
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   display: block;
 }
 
 .sec-h2 {
   font-size: 2.25rem;
   font-weight: 900;
-  color: var(--pm-black);
-  margin-bottom: 10px;
+  color: var(--pm-text-heading);
+  margin-bottom: 12px;
 }
 
 .sec-desc {
@@ -599,197 +653,6 @@ img {
   color: var(--pm-text-muted);
   max-width: 820px;
   margin: 0 auto;
-}
-
-.why-features-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 36px;
-}
-
-.why-card {
-  background: #fbfbfb;
-  border: 1px solid var(--pm-border);
-  border-radius: 14px;
-  padding: 26px;
-  display: flex;
-  gap: 20px;
-  transition: all 0.25s ease;
-}
-
-.why-card:hover {
-  background: #ffffff;
-  border-color: #d0d0d0;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transform: translateY(-3px);
-}
-
-.why-card-icon {
-  font-size: 2rem;
-  width: 56px;
-  height: 56px;
-  min-width: 56px;
-  background: #ffffff;
-  border: 1px solid var(--pm-border);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.why-card-text h4 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--pm-black);
-  margin-bottom: 6px;
-}
-
-.why-card-text h4 span {
-  color: var(--pm-red);
-}
-
-.why-card-text p {
-  font-size: 0.94rem;
-  color: #555555;
-  line-height: 1.6;
-}
-
-/* ==========================================================================
-   6. BUYER'S GUIDE SECTION (PLAYMORE EXACT)
-   ========================================================================== */
-.buyers-guide-section {
-  padding: 60px 0;
-  background: var(--pm-grey-light);
-  border-top: 1px solid var(--pm-border);
-}
-
-.guide-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 900px;
-  margin: 32px auto 0;
-}
-
-.guide-box {
-  background: #ffffff;
-  border: 1px solid var(--pm-border);
-  border-radius: 14px;
-  padding: 28px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.guide-box .guide-ico {
-  font-size: 2.4rem;
-  margin-bottom: 12px;
-}
-
-.guide-box h5 {
-  font-size: 1.18rem;
-  font-weight: 800;
-  color: var(--pm-black);
-  margin-bottom: 8px;
-}
-
-.guide-box p {
-  font-size: 0.95rem;
-  color: #555555;
-  line-height: 1.55;
-}
-
-/* ==========================================================================
-   7. HOW TO USE SECTION (PLAYMORE EXACT)
-   ========================================================================== */
-.how-to-use-section {
-  padding: 70px 0;
-  background: #ffffff;
-}
-
-.usage-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1050px;
-  margin: 36px auto 0;
-}
-
-.usage-card {
-  background: #ffffff;
-  border: 1px solid var(--pm-border);
-  border-radius: 14px;
-  padding: 28px 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  transition: all 0.25s ease;
-}
-
-.usage-card:hover {
-  border-color: #d0d0d0;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transform: translateY(-3px);
-}
-
-.usage-pill {
-  display: inline-block;
-  background: #f0f0f0;
-  color: #444444;
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 50px;
-  margin-bottom: 12px;
-}
-
-.usage-card h5 {
-  font-size: 1.3rem;
-  font-weight: 900;
-  color: var(--pm-black);
-  margin-bottom: 18px;
-}
-
-.usage-list {
-  list-style: none;
-  text-align: left;
-}
-
-.usage-list li {
-  font-size: 0.92rem;
-  color: #444444;
-  padding: 8px 0;
-  border-bottom: 1px dashed #ebebeb;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.usage-list li::before {
-  content: '✓';
-  color: var(--pm-red);
-  font-weight: 900;
-}
-
-.usage-warning-box {
-  max-width: 750px;
-  margin: 32px auto 0;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #777777;
-  background: #f9f9f9;
-  padding: 12px 20px;
-  border-radius: 8px;
-}
-
-/* ==========================================================================
-   8. THE 5 CORE CONCERNS MATRIX SECTION
-   ========================================================================== */
-.concerns-section {
-  padding: 80px 0;
-  background: #fafafa;
-  border-top: 1px solid var(--pm-border);
 }
 
 .concerns-grid {
@@ -800,11 +663,11 @@ img {
 }
 
 .concern-item-card {
-  background: #ffffff;
+  background: var(--pm-bg-card);
   border: 1px solid var(--pm-border);
   border-radius: 14px;
   padding: 26px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   transition: all 0.25s ease;
@@ -812,8 +675,9 @@ img {
 
 .concern-item-card:hover {
   border-color: var(--pm-red);
-  box-shadow: 0 10px 30px rgba(203, 9, 13, 0.1);
+  box-shadow: 0 10px 30px var(--pm-red-glow);
   transform: translateY(-3px);
+  background: var(--pm-bg-card-hover);
 }
 
 .concern-card-top {
@@ -834,13 +698,15 @@ img {
   justify-content: center;
   font-weight: 900;
   font-size: 0.95rem;
+  box-shadow: 0 2px 8px var(--pm-red-glow);
 }
 
 .concern-tag {
   font-size: 0.75rem;
   font-weight: 800;
-  color: #666666;
-  background: #f0f0f0;
+  color: var(--pm-gold);
+  background: #241c0e;
+  border: 1px solid #3d2f17;
   padding: 4px 10px;
   border-radius: 50px;
 }
@@ -848,37 +714,39 @@ img {
 .concern-item-card h3 {
   font-size: 1.25rem;
   font-weight: 900;
-  color: var(--pm-black);
+  color: var(--pm-text-heading);
   margin-bottom: 4px;
   line-height: 1.3;
 }
 
 .concern-item-card h4 {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  color: var(--pm-red);
+  color: #ff5252;
   margin-bottom: 12px;
 }
 
 .concern-item-card p {
-  font-size: 0.93rem;
-  color: #555555;
+  font-size: 0.94rem;
+  color: #b5b5b5;
   line-height: 1.6;
   margin-bottom: 18px;
   flex-grow: 1;
 }
 
 .remedy-highlight-box {
-  background: #fff8f8;
+  background: #1c1010;
   border-left: 3px solid var(--pm-red);
   padding: 12px 14px;
   border-radius: 0 8px 8px 0;
+  border: 1px solid #2d1616;
+  border-left: 3px solid var(--pm-red);
 }
 
 .remedy-label {
   font-size: 0.74rem;
   font-weight: 800;
-  color: var(--pm-red);
+  color: #ff5252;
   text-transform: uppercase;
   margin-bottom: 2px;
   display: block;
@@ -887,22 +755,213 @@ img {
 .remedy-herb {
   font-size: 0.95rem;
   font-weight: 800;
-  color: var(--pm-black);
+  color: var(--pm-gold);
   margin-bottom: 4px;
 }
 
 .remedy-action {
   font-size: 0.85rem;
-  color: #555555;
+  color: #cccccc;
   line-height: 1.45;
 }
 
 /* ==========================================================================
-   9. WHAT'S INSIDE EACH PACK (PLAYMORE EXACT ACCORDION)
+   6. WHY CHOOSE URJA VEDA SECTION
+   ========================================================================== */
+.why-choose-section {
+  padding: 70px 0;
+  background: var(--pm-bg-body);
+}
+
+.why-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.why-card {
+  background: var(--pm-bg-card);
+  border: 1px solid var(--pm-border);
+  border-radius: 14px;
+  padding: 26px;
+  display: flex;
+  gap: 20px;
+  transition: all 0.25s ease;
+}
+
+.why-card:hover {
+  background: var(--pm-bg-card-hover);
+  border-color: #444;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+}
+
+.why-card-icon {
+  font-size: 2rem;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  background: #202020;
+  border: 1px solid var(--pm-border-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-card-text h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--pm-text-heading);
+  margin-bottom: 6px;
+}
+
+.why-card-text h4 span {
+  color: var(--pm-gold);
+}
+
+.why-card-text p {
+  font-size: 0.94rem;
+  color: #aaaaaa;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   7. BUYER'S GUIDE SECTION
+   ========================================================================== */
+.buyers-guide-section {
+  padding: 60px 0;
+  background: #090909;
+  border-top: 1px solid var(--pm-border);
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 32px auto 0;
+}
+
+.guide-box {
+  background: var(--pm-bg-card);
+  border: 1px solid var(--pm-border);
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.guide-box .guide-ico {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.guide-box h5 {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--pm-text-heading);
+  margin-bottom: 8px;
+}
+
+.guide-box p {
+  font-size: 0.95rem;
+  color: #aaaaaa;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   8. HOW TO USE SECTION
+   ========================================================================== */
+.how-to-use-section {
+  padding: 70px 0;
+  background: var(--pm-bg-body);
+}
+
+.usage-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1050px;
+  margin: 36px auto 0;
+}
+
+.usage-card {
+  background: var(--pm-bg-card);
+  border: 1px solid var(--pm-border);
+  border-radius: 14px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.usage-card:hover {
+  border-color: #444;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+}
+
+.usage-pill {
+  display: inline-block;
+  background: #221c10;
+  color: var(--pm-gold);
+  border: 1px solid #3d2f17;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-bottom: 12px;
+}
+
+.usage-card h5 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--pm-text-heading);
+  margin-bottom: 18px;
+}
+
+.usage-list {
+  list-style: none;
+  text-align: left;
+}
+
+.usage-list li {
+  font-size: 0.92rem;
+  color: #b8b8b8;
+  padding: 8px 0;
+  border-bottom: 1px dashed #282828;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.usage-list li::before {
+  content: '✓';
+  color: var(--pm-gold);
+  font-weight: 900;
+}
+
+.usage-warning-box {
+  max-width: 750px;
+  margin: 32px auto 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  background: #181212;
+  border: 1px solid #361919;
+  padding: 14px 20px;
+  border-radius: 8px;
+}
+
+/* ==========================================================================
+   9. WHAT'S INSIDE EACH PACK (ACCORDION)
    ========================================================================== */
 .pm-pack-section {
   width: 100%;
-  background: #f7f7f7;
+  background: #090909;
   padding: 70px 20px;
   border-top: 1px solid var(--pm-border);
 }
@@ -929,20 +988,20 @@ img {
 .pm-pack-heading h2 {
   font-size: 38px;
   line-height: 1.15;
-  color: #111111;
+  color: var(--pm-text-heading);
   font-weight: 900;
   margin: 0;
 }
 
 .pm-pack-heading p {
   margin: 10px 0 0;
-  color: #6b6b6b;
-  font-size: 14px;
+  color: #999999;
+  font-size: 15px;
 }
 
 .pm-pack-item {
-  background: #ffffff;
-  border: 1px solid #e6e6e6;
+  background: var(--pm-bg-card);
+  border: 1px solid var(--pm-border);
   border-radius: 14px;
   margin-bottom: 12px;
   overflow: hidden;
@@ -950,8 +1009,8 @@ img {
 }
 
 .pm-pack-item[open] {
-  border-color: #cfcfcf;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  border-color: #444444;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .pm-pack-item summary {
@@ -980,18 +1039,19 @@ img {
   height: 42px;
   min-width: 42px;
   border-radius: 50%;
-  background: #111111;
-  color: #ffffff;
+  background: #252525;
+  color: var(--pm-gold);
+  border: 1px solid #383838;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 .pm-pack-title h3 {
   margin: 0;
-  color: #111111;
+  color: var(--pm-text-heading);
   font-size: 18px;
   line-height: 1.2;
   font-weight: 800;
@@ -1007,10 +1067,11 @@ img {
 }
 
 .pm-pack-size {
-  background: #f3f3f3;
-  color: #111111;
+  background: #242424;
+  color: #ffffff;
+  border: 1px solid #383838;
   border-radius: 50px;
-  padding: 8px 13px;
+  padding: 8px 14px;
   font-size: 12px;
   font-weight: 800;
   white-space: nowrap;
@@ -1019,8 +1080,8 @@ img {
 .pm-pack-arrow {
   width: 10px;
   height: 10px;
-  border-right: 2px solid #111111;
-  border-bottom: 2px solid #111111;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
   transform: rotate(45deg);
   transition: transform 0.25s ease;
   margin-right: 5px;
@@ -1031,9 +1092,9 @@ img {
 }
 
 .pm-pack-content {
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid var(--pm-border);
   padding: 22px;
-  background: #fcfcfc;
+  background: #111111;
 }
 
 .pm-pack-main-qty {
@@ -1044,20 +1105,20 @@ img {
 }
 
 .pm-pack-main-qty strong {
-  color: var(--pm-red);
+  color: var(--pm-gold);
   font-size: 29px;
   font-weight: 900;
 }
 
 .pm-pack-main-qty span {
-  color: #555555;
+  color: #aaaaaa;
   font-size: 13px;
   font-weight: 700;
 }
 
 .pm-pack-content p {
-  color: #666666;
-  font-size: 13px;
+  color: #b5b5b5;
+  font-size: 13.5px;
   line-height: 1.6;
   margin: 0 0 16px;
 }
@@ -1065,8 +1126,8 @@ img {
 .pm-pack-includes {
   display: flex;
   align-items: center;
-  gap: 6px;
-  color: #222222;
+  gap: 8px;
+  color: #e5e5e5;
   font-size: 13px;
 }
 
@@ -1074,12 +1135,13 @@ img {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #111111;
-  color: #ffffff;
+  background: var(--pm-gold);
+  color: #000000;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 11px;
+  font-weight: 900;
 }
 
 .pm-kit-grid {
@@ -1090,8 +1152,8 @@ img {
 }
 
 .pm-kit-box {
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
+  background: #181818;
+  border: 1px solid var(--pm-border);
   border-radius: 10px;
   padding: 15px 10px;
   text-align: center;
@@ -1099,14 +1161,14 @@ img {
 
 .pm-kit-box strong {
   display: block;
-  color: #111111;
+  color: var(--pm-gold);
   font-size: 22px;
   font-weight: 900;
 }
 
 .pm-kit-box span {
   display: block;
-  color: #777777;
+  color: #aaaaaa;
   font-size: 11px;
   font-weight: 700;
   margin-top: 3px;
@@ -1114,11 +1176,11 @@ img {
 }
 
 /* ==========================================================================
-   10. FREQUENTLY ASKED QUESTIONS (PLAYMORE EXACT ACCORDION)
+   10. FREQUENTLY ASKED QUESTIONS
    ========================================================================== */
 .faqs-section {
   padding: 70px 0;
-  background: #ffffff;
+  background: var(--pm-bg-body);
 }
 
 .faqs-container {
@@ -1131,11 +1193,12 @@ img {
   border-radius: 10px;
   margin-bottom: 12px;
   overflow: hidden;
+  background: var(--pm-bg-card);
   transition: all 0.2s ease;
 }
 
 .faq-accordion-item[open] {
-  border-color: #c0c0c0;
+  border-color: #444444;
 }
 
 .faq-accordion-item summary {
@@ -1148,7 +1211,7 @@ img {
   gap: 16px;
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--pm-black);
+  color: var(--pm-text-heading);
 }
 
 .faq-accordion-item summary::-webkit-details-marker {
@@ -1170,23 +1233,23 @@ img {
 .faq-answer-content {
   padding: 0 24px 20px;
   font-size: 0.95rem;
-  color: #555555;
+  color: #b5b5b5;
   line-height: 1.65;
 }
 
 /* ==========================================================================
-   11. CUSTOMER REVIEWS (PLAYMORE EXACT)
+   11. CUSTOMER REVIEWS
    ========================================================================== */
 .reviews-section {
   padding: 70px 0;
-  background: var(--pm-grey-light);
+  background: #090909;
   border-top: 1px solid var(--pm-border);
 }
 
 .reviews-stats-card {
   max-width: 900px;
   margin: 32px auto 40px;
-  background: #ffffff;
+  background: var(--pm-bg-card);
   border: 1px solid var(--pm-border);
   border-radius: 16px;
   padding: 30px;
@@ -1194,31 +1257,31 @@ img {
   grid-template-columns: 240px 1fr;
   gap: 40px;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .rating-score-box {
   text-align: center;
-  border-right: 1px solid #eeeeee;
+  border-right: 1px solid var(--pm-border);
   padding-right: 20px;
 }
 
 .rating-big-num {
   font-size: 4.5rem;
   font-weight: 900;
-  color: var(--pm-black);
+  color: var(--pm-text-heading);
   line-height: 1;
 }
 
 .rating-stars {
-  color: #f59e0b;
+  color: var(--pm-gold);
   font-size: 1.4rem;
   margin: 6px 0;
 }
 
 .rating-count-label {
   font-size: 0.88rem;
-  color: #777777;
+  color: #999999;
   font-weight: 600;
 }
 
@@ -1238,26 +1301,27 @@ img {
 
 .bar-star-num {
   width: 20px;
+  color: #cccccc;
 }
 
 .progress-track {
   flex: 1;
   height: 8px;
-  background: #eeeeee;
+  background: #252525;
   border-radius: 50px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: #f59e0b;
+  background: var(--pm-gold);
   border-radius: 50px;
 }
 
 .bar-count-num {
   width: 55px;
   text-align: right;
-  color: #777777;
+  color: #888888;
   font-size: 0.82rem;
 }
 
@@ -1270,11 +1334,11 @@ img {
 }
 
 .review-item-card {
-  background: #ffffff;
+  background: var(--pm-bg-card);
   border: 1px solid var(--pm-border);
   border-radius: 12px;
   padding: 22px 26px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
 .review-card-top {
@@ -1287,7 +1351,7 @@ img {
 .reviewer-name {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--pm-black);
+  color: var(--pm-text-heading);
 }
 
 .review-thumbs {
@@ -1295,28 +1359,29 @@ img {
   align-items: center;
   gap: 12px;
   font-size: 0.85rem;
-  color: #777777;
+  color: #888888;
 }
 
 .review-stars-row {
-  color: #f59e0b;
+  color: var(--pm-gold);
   font-size: 0.95rem;
   margin-bottom: 8px;
 }
 
 .review-text-desc {
   font-size: 0.96rem;
-  color: #333333;
+  color: #cccccc;
   line-height: 1.6;
 }
 
 /* ==========================================================================
-   12. FOOTER (PLAYMORE EXACT)
+   12. FOOTER
    ========================================================================== */
 .site-footer {
-  background: #111111;
-  color: #cccccc;
+  background: #080808;
+  color: #aaaaaa;
   padding: 60px 0 30px;
+  border-top: 1px solid var(--pm-border);
 }
 
 .footer-grid {
@@ -1339,7 +1404,7 @@ img {
 
 .footer-brand p {
   font-size: 0.9rem;
-  color: #999999;
+  color: #888888;
   line-height: 1.6;
   margin-bottom: 16px;
 }
@@ -1359,7 +1424,7 @@ img {
 
 .footer-links-list a {
   font-size: 0.9rem;
-  color: #999999;
+  color: #888888;
   transition: color 0.2s ease;
 }
 
@@ -1368,11 +1433,11 @@ img {
 }
 
 .footer-bottom-copy {
-  border-top: 1px solid #222222;
+  border-top: 1px solid #1c1c1c;
   padding-top: 24px;
   text-align: center;
   font-size: 0.85rem;
-  color: #777777;
+  color: #666666;
 }
 
 /* ==========================================================================
@@ -1383,10 +1448,11 @@ img {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #ffffff;
+  background: rgba(18, 18, 18, 0.96);
+  backdrop-filter: blur(10px);
   border-top: 2px solid var(--pm-red);
   padding: 12px 20px;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.7);
   z-index: 1000;
   display: none;
   animation: slideUp 0.3s ease;
@@ -1421,19 +1487,20 @@ img {
   height: 50px;
   border-radius: 6px;
   object-fit: contain;
-  background: #f7f7f7;
+  background: #111111;
+  border: 1px solid #333333;
   padding: 2px;
 }
 
 .sticky-title-wrap h4 {
   font-size: 1rem;
   font-weight: 800;
-  color: var(--pm-black);
+  color: var(--pm-text-heading);
 }
 
 .sticky-title-wrap p {
   font-size: 0.8rem;
-  color: #666666;
+  color: #888888;
 }
 
 .sticky-price-wrap {
@@ -1443,17 +1510,17 @@ img {
 .sticky-price-now {
   font-size: 1.35rem;
   font-weight: 900;
-  color: var(--pm-red);
+  color: var(--pm-gold);
 }
 
 .sticky-price-old {
   font-size: 0.85rem;
-  color: #888888;
+  color: #777777;
   text-decoration: line-through;
 }
 
 .btn-sticky-order {
-  background: var(--pm-red);
+  background: linear-gradient(135deg, var(--pm-red) 0%, #b0070a 100%);
   color: #ffffff;
   font-size: 1.15rem;
   font-weight: 900;
@@ -1462,6 +1529,7 @@ img {
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  box-shadow: 0 4px 15px var(--pm-red-glow);
 }
 
 .btn-sticky-order:hover {
@@ -1469,13 +1537,13 @@ img {
 }
 
 /* ==========================================================================
-   14. FAST CHECKOUT MODAL
+   14. FAST CHECKOUT MODAL (BLACK THEME)
    ========================================================================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
   z-index: 2000;
   display: none;
   align-items: center;
@@ -1488,7 +1556,8 @@ img {
 }
 
 .modal-box {
-  background: #ffffff;
+  background: #161616;
+  border: 1px solid #2e2e2e;
   border-radius: 16px;
   max-width: 540px;
   width: 100%;
@@ -1496,8 +1565,9 @@ img {
   overflow-y: auto;
   padding: 30px;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   animation: popIn 0.25s ease;
+  color: var(--pm-text);
 }
 
 @keyframes popIn {
@@ -1509,8 +1579,8 @@ img {
   position: absolute;
   top: 18px;
   right: 18px;
-  background: #f0f0f0;
-  color: #333333;
+  background: #252525;
+  color: #dddddd;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1520,24 +1590,30 @@ img {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border: 1px solid #383838;
+}
+
+.modal-close-btn:hover {
+  background: #333333;
+  color: #ffffff;
 }
 
 .modal-header h3 {
   font-size: 1.45rem;
   font-weight: 900;
-  color: var(--pm-black);
+  color: var(--pm-text-heading);
   margin-bottom: 4px;
 }
 
 .modal-header p {
   font-size: 0.9rem;
-  color: #666666;
+  color: #999999;
   margin-bottom: 18px;
 }
 
 .checkout-product-summary {
-  background: #fff8f8;
-  border: 1px solid #ffdcdc;
+  background: #1c1414;
+  border: 1px solid #381e1e;
   border-radius: 10px;
   padding: 14px;
   display: flex;
@@ -1556,12 +1632,15 @@ img {
   width: 48px;
   height: 48px;
   object-fit: contain;
+  background: #111111;
+  border-radius: 6px;
+  padding: 2px;
 }
 
 .chk-price-tag {
   font-size: 1.3rem;
   font-weight: 900;
-  color: var(--pm-red);
+  color: var(--pm-gold);
 }
 
 .payment-method-toggle {
@@ -1573,20 +1652,21 @@ img {
 
 .pay-toggle-btn {
   padding: 12px;
-  border: 2px solid var(--pm-border);
+  border: 1.5px solid var(--pm-border);
   border-radius: 8px;
-  background: #ffffff;
+  background: #1a1a1a;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: #cccccc;
 }
 
 .pay-toggle-btn.selected {
   border-color: var(--pm-red);
-  background: #fff8f8;
-  color: var(--pm-red);
+  background: #2a1111;
+  color: #ff6b6b;
 }
 
 .form-group {
@@ -1597,14 +1677,16 @@ img {
   display: block;
   font-size: 0.85rem;
   font-weight: 700;
-  color: #333333;
+  color: #cccccc;
   margin-bottom: 5px;
 }
 
 .form-control {
   width: 100%;
   padding: 12px 14px;
-  border: 1.5px solid #d4d4d4;
+  border: 1.5px solid #333333;
+  background: #1a1a1a;
+  color: #ffffff;
   border-radius: 8px;
   font-size: 0.95rem;
   font-family: inherit;
@@ -1614,6 +1696,11 @@ img {
 .form-control:focus {
   border-color: var(--pm-red);
   outline: none;
+  background: #202020;
+}
+
+.form-control::placeholder {
+  color: #666666;
 }
 
 .form-row-2 {
@@ -1624,7 +1711,7 @@ img {
 
 .btn-confirm-order {
   width: 100%;
-  background: var(--pm-red);
+  background: linear-gradient(135deg, var(--pm-red) 0%, #b0070a 100%);
   color: #ffffff;
   font-size: 1.25rem;
   font-weight: 900;
@@ -1632,7 +1719,8 @@ img {
   border-radius: 8px;
   cursor: pointer;
   margin-top: 8px;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 18px var(--pm-red-glow);
 }
 
 .btn-confirm-order:hover {
@@ -1640,7 +1728,7 @@ img {
 }
 
 /* ==========================================================================
-   15. RESPONSIVE DESIGN (PLAYMORE EXACT MOBILE OPTIMIZATION)
+   15. RESPONSIVE DESIGN (MOBILE OPTIMIZATION)
    ========================================================================== */
 @media (max-width: 992px) {
   .hero-product-grid {
@@ -1727,7 +1815,7 @@ img {
 
   .rating-score-box {
     border-right: none;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid var(--pm-border);
     padding-right: 0;
     padding-bottom: 20px;
   }
