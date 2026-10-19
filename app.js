@@ -6,41 +6,38 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Product Catalog
   const products = {
-    oil: {
-      id: 'oil',
-      name: 'Urja Veda Oil',
-      subtitle: '30 ML Dropper Bottle • हर्बल मसाज ऑयल',
-      price: 849,
-      regularPrice: 1099,
-      img: 'assets/images/oil.jpg',
-      ribbon: '🔥 हर्बल ऑयल • 20% छूट'
-    },
-    powder: {
-      id: 'powder',
-      name: 'Urja Veda Powder',
-      subtitle: '150g Traditional Jar • आयुर्वेदिक चूर्ण',
-      price: 899,
-      regularPrice: 1999,
-      img: 'assets/images/powder.jpg',
-      ribbon: '🔥 पारंपरिक चूर्ण • 55% छूट'
+    kit: {
+      id: 'kit',
+      name: 'Urja Veda 2-in-1 Combo Pack',
+      subtitle: 'Oil (30ml) + Capsules (30 Caps) • संपूर्ण पावर कॉम्बो',
+      itemPrice: 1799,
+      deliveryFee: 0,
+      price: 1799,
+      regularPrice: 2396,
+      img: 'assets/images/combo-pack.jpg',
+      ribbon: '🔥 बेस्ट सेलर • 2-in-1 कॉम्बो (Free Delivery)'
     },
     capsule: {
       id: 'capsule',
-      name: 'Urja Veda Capsule',
-      subtitle: '60 Veg Capsules • 100% शाकाहारी कैप्सूल',
-      price: 1069,
-      regularPrice: 2199,
+      name: 'Urja Veda Male Performance',
+      subtitle: '30 Veg Capsules • Vitality, Stamina & Energy',
+      itemPrice: 1499,
+      deliveryFee: 149,
+      price: 1648,
+      regularPrice: 2499,
       img: 'assets/images/capsules.jpg',
-      ribbon: '🔥 प्रीमियम कैप्सूल • 52% छूट'
+      ribbon: '🔥 30 Veg Capsules • (+ ₹149 Delivery)'
     },
-    kit: {
-      id: 'kit',
-      name: 'Urja Veda Complete Kit',
-      subtitle: 'Oil (30ml) + Capsules (60) + Powder (150g) • संपूर्ण महा पैक',
-      price: 1669,
-      regularPrice: 4737,
-      img: 'assets/images/combo-pack.jpg',
-      ribbon: '🔥 बेस्ट सेलर • 3-इन-1 कॉम्बो (66% छूट)'
+    oil: {
+      id: 'oil',
+      name: 'Urja Veda Ayurvedic Oil',
+      subtitle: '30 ML Dropper Bottle • Natural, Safe & Effective',
+      itemPrice: 599,
+      deliveryFee: 149,
+      price: 748,
+      regularPrice: 999,
+      img: 'assets/images/oil.jpg',
+      ribbon: '🔥 हर्बल मसाज ऑयल 30ml • (+ ₹149 Delivery)'
     }
   };
 
