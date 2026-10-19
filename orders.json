@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Rajesh Sharma",
+    "phone": "9812345678",
+    "address": "B-42, Sector 18, Near Wave Mall",
+    "pincode": "201301",
+    "city": "Noida",
+    "payment_mode": "COD",
+    "product_id": "kit",
+    "product_name": "Urja Veda Complete Kit",
+    "amount": 1669,
+    "order_id": "UV-391298",
+    "created_at": "2026-10-19 11:58:18",
+    "fship_status": {
+      "success": false,
+      "error_code": 401,
+      "error_message": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.2\",\"title\":\"Unauthorized\",\"status\":401,\"traceId\":\"00-29cd74c7b6104ab5eaa67c7758741d9c-47efde946b9ce753-00\"}",
+      "note": "Fship received the request. If 401 Unauthorized, verify key activation on Fship Dashboard."
+    }
+  }
+]
