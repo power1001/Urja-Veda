@@ -139,6 +139,73 @@ def forward_to_fship(order_info):
             "error_message": str(e)
         }
 
+# =====================================================================
+# Razorpay Live Integration Helpers
+# =====================================================================
+def create_razorpay_order(amount_in_rupees, receipt_id, notes=None):
+    config = load_config()
+    key_id = config.get("razorpay_key_id", "rzp_live_Tpg6VudIihKrcr").strip()
+    key_secret = config.get("razorpay_key_secret", "FjQdbmikcCY89emssFSB0QzH").strip()
+
+    amount_paise = int(round(float(amount_in_rupees) * 100))
+    url = "https://api.razorpay.com/v1/orders"
+    auth_str = f"{key_id}:{key_secret}"
+    b64_auth = base64.b64encode(auth_str.encode("utf-8")).decode("utf-8")
+
+    payload = {
+        "amount": amount_paise,
+        "currency": "INR",
+        "receipt": str(receipt_id),
+        "notes": notes or {}
+    }
+
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Basic {b64_auth}",
+        "User-Agent": "UrjaVeda-Razorpay/1.0"
+    }
+
+    print(f"💳 [Razorpay API Request] Amount: ₹{amount_in_rupees} ({amount_paise} paise) Receipt: {receipt_id}")
+    try:
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(payload).encode("utf-8"),
+            headers=headers,
+            method="POST"
+        )
+        with urllib.request.urlopen(req, timeout=12) as response:
+            res_body = response.read().decode("utf-8")
+            res_json = json.loads(res_body) if res_body else {}
+            print(f"✅ [Razorpay Order Created Successfully]: {res_json.get('id')}")
+            return {
+                "success": True,
+                "order": res_json,
+                "key_id": key_id
+            }
+    except urllib.error.HTTPError as e:
+        err_content = e.read().decode("utf-8", errors="ignore")
+        print(f"❌ [Razorpay API HTTP Error {e.code}]: {err_content}")
+        return {
+            "success": False,
+            "error_code": e.code,
+            "error_message": err_content or str(e)
+        }
+    except Exception as e:
+        print(f"❌ [Razorpay Connection Exception]: {e}")
+        return {
+            "success": False,
+            "error_message": str(e)
+        }
+
+def verify_razorpay_signature(razorpay_order_id, razorpay_payment_id, razorpay_signature):
+    config = load_config()
+    key_secret = config.get("razorpay_key_secret", "FjQdbmikcCY89emssFSB0QzH").strip()
+    msg = f"{razorpay_order_id}|{razorpay_payment_id}".encode("utf-8")
+    expected_sig = hmac.new(key_secret.encode("utf-8"), msg, hashlib.sha256).hexdigest()
+    matched = hmac.compare_digest(expected_sig, razorpay_signature)
+    print(f"🔐 [Razorpay Signature Check]: {razorpay_payment_id} -> {'MATCHED' if matched else 'FAILED'}")
+    return matched
+
 class UrjaVedaRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         # Enable CORS for local testing & headless environments
@@ -166,6 +233,17 @@ class UrjaVedaRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps({"success": True, "count": len(orders), "orders": orders}).encode("utf-8"))
             return
 
+        elif self.path == "/api/razorpay-key":
+            config = load_config()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "success": True,
+                "key_id": config.get("razorpay_key_id", "rzp_live_Tpg6VudIihKrcr")
+            }).encode("utf-8"))
+            return
+
         elif self.path == "/api/test-fship":
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
@@ -190,18 +268,97 @@ class UrjaVedaRequestHandler(http.server.SimpleHTTPRequestHandler):
         return super().do_GET()
 
     def do_POST(self):
-        if self.path == "/api/create-order":
-            content_length = int(self.headers.get("Content-Length", 0))
-            post_data = self.rfile.read(content_length)
+        content_length = int(self.headers.get("Content-Length", 0))
+        post_data = self.rfile.read(content_length)
 
-            try:
-                order_input = json.loads(post_data.decode("utf-8"))
-            except Exception as e:
+        try:
+            req_data = json.loads(post_data.decode("utf-8")) if post_data else {}
+        except Exception:
+            self.send_response(400)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": False, "error": "Invalid JSON"}).encode("utf-8"))
+            return
+
+        # 1. Create Razorpay Live Order
+        if self.path == "/api/create-razorpay-order":
+            amount = req_data.get("amount", 1799)
+            receipt_id = f"UV-RCPT-{int(datetime.now().timestamp())}"
+            notes = {
+                "product_name": req_data.get("product_name", "Urja Veda Combo"),
+                "product_id": req_data.get("product_id", "kit"),
+                "customer_name": req_data.get("name", ""),
+                "customer_phone": req_data.get("phone", "")
+            }
+            rzp_res = create_razorpay_order(amount, receipt_id, notes)
+            self.send_response(200 if rzp_res.get("success") else 500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps(rzp_res).encode("utf-8"))
+            return
+
+        # 2. Verify Razorpay Payment & Forward to Fship (Delhivery Partner)
+        elif self.path == "/api/verify-razorpay-payment":
+            rzp_order_id = req_data.get("razorpay_order_id")
+            rzp_payment_id = req_data.get("razorpay_payment_id")
+            rzp_signature = req_data.get("razorpay_signature")
+            order_info = req_data.get("order_payload", {})
+
+            if not (rzp_order_id and rzp_payment_id and rzp_signature):
                 self.send_response(400)
                 self.send_header("Content-Type", "application/json")
                 self.end_headers()
-                self.wfile.write(json.dumps({"success": False, "error": "Invalid JSON"}).encode("utf-8"))
+                self.wfile.write(json.dumps({"success": False, "error": "Missing Razorpay payment parameters"}).encode("utf-8"))
                 return
+
+            # Verify cryptographic signature
+            is_valid = verify_razorpay_signature(rzp_order_id, rzp_payment_id, rzp_signature)
+            if not is_valid:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": "Signature verification failed"}).encode("utf-8"))
+                return
+
+            # Mark order as PREPAID & Paid
+            order_id = order_info.get("order_id") or f"UV-{int(datetime.now().timestamp()) % 1000000:06d}"
+            order_info["order_id"] = order_id
+            order_info["created_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            order_info["payment_mode"] = "PREPAID"
+            order_info["payment_status"] = "PAID"
+            order_info["razorpay_order_id"] = rzp_order_id
+            order_info["razorpay_payment_id"] = rzp_payment_id
+
+            # Forward to Fship (Delhivery Partner) with cod_amount = 0.0
+            fship_result = forward_to_fship(order_info)
+            order_info["fship_status"] = fship_result
+
+            # Save order to local orders.json
+            save_order(order_info)
+
+            # Response back to client
+            response_data = {
+                "success": True,
+                "order_id": order_id,
+                "customer_name": order_info.get("name"),
+                "amount": order_info.get("amount"),
+                "payment_mode": "PREPAID",
+                "payment_id": rzp_payment_id,
+                "courier_partner": "Delhivery (via Fship)",
+                "awb_number": fship_result.get("awb") or f"AWB-DLV-{order_id[3:]}",
+                "fship_dispatched": fship_result.get("success", False),
+                "fship_details": fship_result
+            }
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode("utf-8"))
+            return
+
+        # 3. Create Standard Cash on Delivery (COD) Order
+        elif self.path == "/api/create-order":
+            order_input = req_data
 
             # Generate unique Order ID if not provided
             order_id = order_input.get("order_id") or f"UV-{int(datetime.now().timestamp()) % 1000000:06d}"
@@ -243,4 +400,5 @@ if __name__ == "__main__":
     with socketserver.TCPServer(("", PORT), UrjaVedaRequestHandler) as httpd:
         print(f"🚀 [Urja Veda Server Running] http://localhost:{PORT}")
         print(f"📦 [Fship Integration Active] Key: cb521b2b38cbb3292b8c31234b66bb3295960a33cef1de90406b844648f1fee9")
+        print(f"💳 [Razorpay Live Active] Key ID: rzp_live_Tpg6VudIihKrcr")
         httpd.serve_forever()
