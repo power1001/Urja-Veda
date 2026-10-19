@@ -1,6 +1,6 @@
 /**
  * URJA VEDA — Interactive Web Application Engine
- * Exact PlayMore.in D2C Logic & English Experience
+ * Exact PlayMore.in D2C Logic (Bilingual Hindi + English Experience)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,20 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
     oil: {
       id: 'oil',
       name: 'Urja Veda Oil',
-      subtitle: '30 ML Dropper Bottle • Local Herbal Tonic',
+      subtitle: '30 ML Dropper Bottle • हर्बल ऑयल',
       price: 849,
       regularPrice: 1099,
       img: 'assets/images/oil.jpg',
-      ribbon: 'Herbal Oil • 20% Off'
+      ribbon: 'हर्बल ऑयल • 20% छूट'
     },
     powder: {
       id: 'powder',
       name: 'Urja Veda Powder',
-      subtitle: '150g Traditional Powder • Milk Regimen',
+      subtitle: '150g Traditional Powder • आयुर्वेदिक चूर्ण',
       price: 899,
       regularPrice: 1999,
       img: 'assets/images/powder.jpg',
-      ribbon: 'Traditional Churna • 55% Off'
+      ribbon: 'पारंपरिक चूर्ण • 55% छूट'
     },
     capsule: {
       id: 'capsule',
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       price: 1069,
       regularPrice: 2199,
       img: 'assets/images/capsules.jpg',
-      ribbon: 'Premium Capsules • 52% Off'
+      ribbon: 'प्रीमियम कैप्सूल • 52% छूट'
     },
     kit: {
       id: 'kit',
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       price: 1669,
       regularPrice: 4737,
       img: 'assets/images/combo-pack.jpg',
-      ribbon: 'Best Seller • 3-in-1 Combo Pack (66% Off)'
+      ribbon: 'बेस्ट सेलर • 3-इन-1 कॉम्बो (66% छूट)'
     }
   };
 
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (paymentMethod === 'PREPAID') {
       payable = Math.round(prod.price * 0.9); // 10% instant prepaid discount
       if (chkTotal) {
-        chkTotal.innerHTML = `₹ ${payable.toLocaleString('en-IN')}/- <small style="display:block; color:#0d8a43; font-size:0.75rem;">(10% Online Discount Applied)</small>`;
+        chkTotal.innerHTML = `₹ ${payable.toLocaleString('en-IN')}/- <small style="display:block; color:#0d8a43; font-size:0.75rem;">(10% ऑनलाइन छूट लागू)</small>`;
       }
     } else {
       if (chkTotal) chkTotal.textContent = `₹ ${payable.toLocaleString('en-IN')}/-`;
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const city = document.getElementById('custCity')?.value.trim();
 
     if (!name || !phone || !addr || !pin || !city) {
-      alert('Please fill out all required shipping details correctly.');
+      alert('कृपया डिलीवरी के सभी आवश्यक विवरण सही से भरें। (Please fill all shipping details)');
       return;
     }
 
