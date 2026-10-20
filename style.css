@@ -693,8 +693,9 @@ img {
 }
 
 .concerns-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
   margin-top: 36px;
 }
@@ -708,6 +709,10 @@ img {
   display: flex;
   flex-direction: column;
   transition: all 0.25s ease;
+  flex: 0 1 calc((100% - 48px) / 3);
+  width: calc((100% - 48px) / 3);
+  max-width: calc((100% - 48px) / 3);
+  min-width: 290px;
 }
 
 .concern-item-card:hover {
