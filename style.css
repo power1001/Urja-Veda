@@ -1785,8 +1785,10 @@ img {
     min-height: 380px;
   }
 
-  .concerns-grid {
-    grid-template-columns: 1fr 1fr;
+  .concern-item-card {
+    flex: 0 1 calc((100% - 24px) / 2);
+    width: calc((100% - 24px) / 2);
+    max-width: calc((100% - 24px) / 2);
   }
 
   .why-features-grid {
@@ -1844,8 +1846,10 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .concerns-grid {
-    grid-template-columns: 1fr;
+  .concern-item-card {
+    flex: 0 1 100%;
+    width: 100%;
+    max-width: 100%;
   }
 
   .reviews-stats-card {
@@ -1875,10 +1879,15 @@ img {
   }
 
   .floating-whatsapp-btn {
-    bottom: 84px;
+    bottom: 24px;
     right: 14px;
     padding: 10px 16px;
     font-size: 0.85rem;
+  }
+
+  .sticky-buy-bar.visible ~ .floating-whatsapp-btn,
+  .floating-whatsapp-btn.above-sticky {
+    bottom: 86px;
   }
 
   .header-whatsapp-btn span {
@@ -1895,8 +1904,8 @@ img {
    ========================================================================== */
 .floating-whatsapp-btn {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
+  bottom: 24px;
+  right: 24px;
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -1909,9 +1918,15 @@ img {
   font-size: 0.95rem;
   text-decoration: none;
   box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4), 0 0 15px rgba(16, 185, 129, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s ease;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
   animation: pulse-wa-green 2.5s infinite;
+}
+
+/* Ensure Floating WhatsApp NEVER overlaps Sticky Buy Bar */
+.sticky-buy-bar.visible ~ .floating-whatsapp-btn,
+.floating-whatsapp-btn.above-sticky {
+  bottom: 88px;
 }
 
 .floating-whatsapp-btn svg {
