@@ -205,14 +205,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // -------------------------------------------------------------------------
-  // Sticky Bottom Bar on Scroll (Past 300px)
+  // Sticky Bottom Bar on Scroll (Past 320px) & Floating WhatsApp Adjustment
   // -------------------------------------------------------------------------
+  const floatingWaBtn = document.querySelector('.floating-whatsapp-btn');
   window.addEventListener('scroll', () => {
     const scrollPos = window.scrollY;
     if (scrollPos > 320) {
       stickyBuyBar?.classList.add('visible');
+      floatingWaBtn?.classList.add('above-sticky');
     } else {
       stickyBuyBar?.classList.remove('visible');
+      floatingWaBtn?.classList.remove('above-sticky');
     }
   });
 
@@ -259,7 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCheckoutView();
   });
 
-  // Checkout Form Submission & Fship Delhivery Dispatch
+  // -------------------------------------------------------------------------
+  // Checkout Form Submission & Payment Processing (Razorpay Live & COD)
+  // -------------------------------------------------------------------------
   checkoutForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -278,13 +283,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '⏳ ऑर्डर दर्ज हो रहा है व Delhivery Waybill जनरेट हो रहा है...';
     }
 
     const prod = products[currentProductId];
-    let payable = prod ? prod.price : 1669;
+    let payable = prod ? prod.price : 1799;
     if (paymentMethod === 'PREPAID') {
-      payable = Math.round(payable * 0.9);
+      payable = Math.round(payable * 0.9); // 10% instant prepaid discount
     }
 
     const orderPayload = {
@@ -295,12 +299,130 @@ document.addEventListener('DOMContentLoaded', () => {
       city: city,
       payment_mode: paymentMethod,
       product_id: currentProductId,
-      product_name: prod ? prod.name : 'Urja Veda Complete Kit',
+      product_name: prod ? prod.name : 'Urja Veda 2-in-1 Combo Pack',
       amount: payable
     };
 
     let assignedOrderId = 'UV-' + Math.floor(100000 + Math.random() * 900000);
     let assignedAwb = 'AWB-DLV-' + assignedOrderId.replace('UV-', '');
+
+    // ---------------------------------------------------------
+    // ONLINE PREPAID: Razorpay Live Gateway Flow
+    // ---------------------------------------------------------
+    if (paymentMethod === 'PREPAID') {
+      if (submitBtn) {
+        submitBtn.innerHTML = '⏳ Razorpay सुरक्षित पेमेंट गेटवे खुल रहा है...';
+      }
+
+      try {
+        const orderRes = await fetch('/api/create-razorpay-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderPayload)
+        });
+        const orderData = await orderRes.json();
+
+        if (!orderData || !orderData.success || !orderData.order) {
+          throw new Error(orderData?.error_message || 'Razorpay order creation failed');
+        }
+
+        const rzpOptions = {
+          key: orderData.key_id || 'rzp_live_Tpg6VudIihKrcr',
+          amount: orderData.order.amount,
+          currency: 'INR',
+          name: 'Urja Veda (ऊर्जा वेद)',
+          description: prod ? prod.name : 'Urja Veda Male Vitality',
+          image: prod ? prod.img : 'assets/images/combo-pack.jpg',
+          order_id: orderData.order.id,
+          prefill: {
+            name: name,
+            contact: phone,
+            email: 'care@urjaveda.in'
+          },
+          theme: {
+            color: '#10B981'
+          },
+          modal: {
+            ondismiss: function() {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+              }
+            }
+          },
+          handler: async function (rzpResponse) {
+            if (submitBtn) {
+              submitBtn.innerHTML = '⏳ पेमेंट वेरिफाई हो रही है व Delhivery Waybill जनरेट हो रहा है...';
+            }
+
+            try {
+              const verifyRes = await fetch('/api/verify-razorpay-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  razorpay_order_id: rzpResponse.razorpay_order_id,
+                  razorpay_payment_id: rzpResponse.razorpay_payment_id,
+                  razorpay_signature: rzpResponse.razorpay_signature,
+                  order_payload: orderPayload
+                })
+              });
+              const verifyData = await verifyRes.json();
+              if (verifyData && verifyData.order_id) {
+                assignedOrderId = verifyData.order_id;
+              }
+              if (verifyData && verifyData.awb_number) {
+                assignedAwb = verifyData.awb_number;
+              }
+            } catch (err) {
+              console.warn('[Razorpay Verification Network Fallback]', err);
+            }
+
+            // Populate Success Screen
+            if (successName) successName.textContent = name;
+            if (successOrderId) successOrderId.textContent = assignedOrderId;
+            if (successAwb) successAwb.textContent = assignedAwb;
+            if (successPayment) {
+              successPayment.innerHTML = `ऑनलाइन प्रीपेड (Razorpay: <span style="font-family:monospace; color:#10B981;">${rzpResponse.razorpay_payment_id}</span>) • ₹ ${payable.toLocaleString('en-IN')}`;
+            }
+
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalBtnText;
+            }
+
+            checkoutForm.style.display = 'none';
+            if (orderSuccessScreen) orderSuccessScreen.style.display = 'block';
+          }
+        };
+
+        if (window.Razorpay) {
+          const rzpInstance = new window.Razorpay(rzpOptions);
+          rzpInstance.open();
+        } else {
+          alert('Razorpay SDK लोड नहीं हो पाया। कृपया कैश ऑन डिलीवरी (COD) चुनें या रिफ्रेश करें।');
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+          }
+        }
+        return;
+      } catch (err) {
+        console.error('[Razorpay Order Flow Error]', err);
+        alert('ऑनलाइन पेमेंट शुरू करने में समस्या आई। आप कैश ऑन डिलीवरी (COD) चुन सकते हैं।');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
+        return;
+      }
+    }
+
+    // ---------------------------------------------------------
+    // CASH ON DELIVERY (COD) FLOW
+    // ---------------------------------------------------------
+    if (submitBtn) {
+      submitBtn.innerHTML = '⏳ ऑर्डर दर्ज हो रहा है व Delhivery Waybill जनरेट हो रहा है...';
+    }
 
     try {
       const res = await fetch('/api/create-order', {
@@ -327,9 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (successOrderId) successOrderId.textContent = assignedOrderId;
     if (successAwb) successAwb.textContent = assignedAwb;
     if (successPayment) {
-      successPayment.textContent = paymentMethod === 'COD' 
-        ? `Cash on Delivery (₹ ${payable.toLocaleString('en-IN')})` 
-        : `Prepaid Online (₹ ${payable.toLocaleString('en-IN')} - 10% Off)`;
+      successPayment.textContent = `Cash on Delivery (₹ ${payable.toLocaleString('en-IN')})`;
     }
 
     if (submitBtn) {
