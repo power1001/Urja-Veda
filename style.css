@@ -1571,7 +1571,7 @@ img {
 .sticky-price-old {
   font-size: 0.85rem;
   color: #777777;
-  text-decoration: line-through;
+  text-decoration: underline;
 }
 
 .btn-sticky-order {
